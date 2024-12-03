@@ -1,6 +1,7 @@
 {
   "name": "my-website",
   "version": "0.0.0",
+  "packageManager": "pnpm@9.14.3",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
