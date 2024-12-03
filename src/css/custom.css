@@ -10,6 +10,24 @@ html[data-theme="dark"] {
   --ifm-background-color: #11032c;
   --ifm-navbar-background-color: unset;
   --code-block-background-color: #15002c;
+  --ifm-color-primary: #55bbff;
+}
+
+.navbar-custom-icon {
+  scale: 1;
+  transition: scale 0.25s;
+}
+
+.navbar-custom-icon:hover {
+  scale: 1.1;
+}
+
+.navbar-github-icon {
+  height: 2em;
+}
+
+.navbar-bluesky-icon {
+  height: 1.5em;
 }
 
 .main-wrapper {

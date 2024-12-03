@@ -75,15 +75,21 @@ const config: Config = {
         {
           type: "html",
           position: "right",
-          value:
-            '<img src="img/Bluesky.svg" alt="Logo" style="height: 23px;" />',
+          value: `
+            <a target="_blank" href="https://bsky.app/profile/kinekt.dev">
+              <img src="img/Bluesky.svg" alt="Logo" class="navbar-custom-icon navbar-bluesky-icon" />
+            </a>
+          `,
           className: "custom-navbar-item",
         },
         {
           type: "html",
           position: "right",
-          value:
-            '<img src="img/GitHub.svg" alt="Logo" style="height: 30px;" />',
+          value: `
+              <a target="_blank" href="https://github.com/simplicity/kinekt">
+                <img src="img/GitHub.svg" alt="Logo" class="navbar-custom-icon navbar-github-icon" />
+              </a>
+            `,
           className: "custom-navbar-item",
         },
       ],
@@ -136,6 +142,11 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.shadesOfPurple,
+    },
+    colorMode: {
+      disableSwitch: true,
+      defaultMode: "dark",
+      respectPrefersColorScheme: false,
     },
   } satisfies Preset.ThemeConfig,
 };

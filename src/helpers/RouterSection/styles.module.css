@@ -9,12 +9,14 @@
   display: flex;
   flex-direction: column;
   width: 20em;
+  z-index: 1;
 }
 
 .blueBlob {
   position: absolute;
   left: -18em;
   top: 6.5em;
+  z-index: 0;
 }
 
 .illustration {
