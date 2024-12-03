@@ -17,8 +17,9 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "simplicity", // Usually your GitHub org/user name.
+  projectName: "kinekt.github.io", // Usually your repo name.
+  deploymentBranch: "gh-pages",
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -37,10 +38,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
           showReadingTime: true,
@@ -48,10 +45,6 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
