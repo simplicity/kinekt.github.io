@@ -1,0 +1,13 @@
+.outer {
+  background-color: var(--code-block-background-color);
+  --code-box-border-color: #716fa3;
+  border: 1px solid var(--code-box-border-color);
+  border-radius: 1.5em;
+  margin-left: 2em;
+  overflow: hidden;
+}
+
+.line {
+  border-bottom: 1px solid var(--code-box-border-color);
+  margin-top: 1.5em;
+}
