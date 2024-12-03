@@ -10,7 +10,7 @@ export function PipelineSection() {
         src="img/Pipeline Illustration.svg"
       ></img>
 
-      <img className={styles.blueBlob} src="img/Blue Blob 1.png"></img>
+      <img className={styles.blueBlob} src="img/blue-blob-1.png"></img>
 
       <h1>Middlewares and Pipelines</h1>
 

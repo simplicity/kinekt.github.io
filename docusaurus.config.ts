@@ -63,7 +63,7 @@ const config: Config = {
     navbar: {
       logo: {
         alt: "My Site Logo",
-        src: "img/Kinekt Logo With Text.svg",
+        src: "img/kinekt-logo-with-text.svg",
       },
       items: [
         {
@@ -77,7 +77,7 @@ const config: Config = {
           position: "right",
           value: `
             <a target="_blank" href="https://bsky.app/profile/kinekt.dev">
-              <img src="img/Bluesky.svg" alt="Logo" class="navbar-custom-icon navbar-bluesky-icon" />
+              <img src="img/bluesky.svg" alt="Logo" class="navbar-custom-icon navbar-bluesky-icon" />
             </a>
           `,
           className: "custom-navbar-item",
@@ -87,7 +87,7 @@ const config: Config = {
           position: "right",
           value: `
               <a target="_blank" href="https://github.com/simplicity/kinekt">
-                <img src="img/GitHub.svg" alt="Logo" class="navbar-custom-icon navbar-github-icon" />
+                <img src="img/github.svg" alt="Logo" class="navbar-custom-icon navbar-github-icon" />
               </a>
             `,
           className: "custom-navbar-item",

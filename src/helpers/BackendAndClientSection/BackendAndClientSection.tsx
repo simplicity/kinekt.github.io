@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 export function BackendAndClientSection() {
   return (
     <div className={styles.outer}>
-      <img className={styles.purpleBlob} src="img/Purple Blob 1.png"></img>
+      <img className={styles.purpleBlob} src="img/purple-blob-1.png"></img>
 
       <div className={styles.texts}>
         <h1>Write Backend Code And Get The Client For Free.</h1>
