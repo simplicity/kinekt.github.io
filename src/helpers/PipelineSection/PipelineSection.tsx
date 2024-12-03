@@ -7,7 +7,7 @@ export function PipelineSection() {
     <div className={styles.outer}>
       <img
         className={styles.illustration}
-        src="img/Pipeline Illustration.svg"
+        src="img/pipeline-illustration.svg"
       ></img>
 
       <img className={styles.blueBlob} src="img/blue-blob-1.png"></img>
