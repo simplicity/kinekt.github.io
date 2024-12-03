@@ -1,5 +1,5 @@
 import CodeBlock from "@theme/CodeBlock";
-import { CodeBlockWrapper } from "../helpers/CodeBlockWrapper/CodeBlockWrapper";
+import { CodeBlockWrapper } from "../../helpers/CodeBlockWrapper/CodeBlockWrapper";
 import styles from "./styles.module.css";
 
 export function BackendAndClientSection() {
