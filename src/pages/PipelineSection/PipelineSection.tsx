@@ -26,10 +26,10 @@ export function PipelineSection() {
             passed through a given pipeline.
           </p>
 
-          <p>Every endpoint is stand-alone pipeline.</p>
+          <p>Every endpoint is a stand-alone pipeline.</p>
         </div>
 
-        <CodeBlockWrapper className={styles.codeBlockWrapper}>
+        <CodeBlockWrapper>
           <CodeBlock language="TypeScript" showLineNumbers>
             {code}
           </CodeBlock>

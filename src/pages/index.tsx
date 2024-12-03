@@ -1,8 +1,10 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import { BackendAndClientSection } from "./BackendAndClientSection/BackendAndClientSection";
-import styles from "./styles.module.css";
 import { PipelineSection } from "./PipelineSection/PipelineSection";
+import { RouterSection } from "./RouterSection/RouterSection";
+import styles from "./styles.module.css";
+import { TypeSafetySection } from "./TypeSafetySection/TypeSafetySection";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -22,6 +24,10 @@ export default function Home(): JSX.Element {
         <BackendAndClientSection></BackendAndClientSection>
 
         <PipelineSection></PipelineSection>
+
+        <RouterSection></RouterSection>
+
+        <TypeSafetySection></TypeSafetySection>
       </main>
     </Layout>
   );
