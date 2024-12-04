@@ -10,6 +10,12 @@ Kinekt is under active development. APIs will change, and you probably shouldn't
 
 :::
 
+:::info
+
+The code that follows is available under [this](https://github.com/simplicity/try-kinekt-with-node) repo.
+
+:::
+
 ## Installation
 
 ```bash npm2yarn
