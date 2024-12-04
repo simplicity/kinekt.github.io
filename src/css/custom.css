@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
+  --ifm-font-family-base: "Inter", sans-serif;
   --ifm-heading-font-family: "Inter", sans-serif;
   --ifm-heading-font-weight: 900;
   --ifm-heading-color: white;
+  --ifm-button-color: white;
 }
 
 html[data-theme="dark"] {
@@ -11,6 +13,15 @@ html[data-theme="dark"] {
   --ifm-navbar-background-color: unset;
   --code-block-background-color: #15002c;
   --ifm-color-primary: #55bbff;
+}
+
+::selection {
+  background-color: #47b4cf;
+}
+
+img {
+  user-select: none;
+  pointer-events: none;
 }
 
 .navbar-custom-icon {

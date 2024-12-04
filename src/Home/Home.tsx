@@ -1,10 +1,10 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import { BackendAndClientSection } from "./sections/BackendAndClientSection/BackendAndClientSection";
+import { Header } from "./sections/Header/Header";
 import { PipelineSection } from "./sections/PipelineSection/PipelineSection";
 import { RouterSection } from "./sections/RouterSection/RouterSection";
 import { TypeSafetySection } from "./sections/TypeSafetySection/TypeSafetySection";
-import styles from "./styles.module.css";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -14,11 +14,7 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />"
       noFooter={true}
     >
-      <header className={styles.header}>
-        <h1>Build REST APIs With High Precision.</h1>
-        <h2>Kinekt is a Zero-Dependency TypeScript Web Framework.</h2>
-        <img src="img/herobg.png"></img>
-      </header>
+      <Header></Header>
 
       <main>
         <BackendAndClientSection></BackendAndClientSection>

@@ -16,15 +16,19 @@
   height: 100%;
   max-width: unset;
   z-index: 0;
-  user-select: none;
 }
 
 .header h1 {
-  font-size: 2.5em;
+  font-size: 3em;
   z-index: 1;
 }
 
 .header h2 {
   margin-top: 2em;
   z-index: 1;
+}
+
+.button {
+  margin-top: 4em;
+  --ifm-color-primary: #0c86d7;
 }
