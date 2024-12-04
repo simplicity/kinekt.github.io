@@ -15,6 +15,25 @@ html[data-theme="dark"] {
   --ifm-color-primary: #55bbff;
 }
 
+.footer--dark {
+  --ifm-footer-background-color: var(--ifm-background-color);
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: 0.75em;
+}
+
+.footer__bottom {
+  margin-top: 4em;
+}
+
 ::selection {
   background-color: #47b4cf;
 }
@@ -27,6 +46,8 @@ img {
 .navbar-custom-icon {
   scale: 1;
   transition: scale 0.25s;
+  user-select: unset;
+  pointer-events: unset;
 }
 
 .navbar-custom-icon:hover {

@@ -98,46 +98,24 @@ const config: Config = {
       style: "dark",
       links: [
         {
-          title: "Docs",
+          title: "Resources",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "Blog",
-              to: "/blog",
+              label: "Bluesky",
+              href: "https://bsky.app/profile/kinekt.dev",
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/simplicity/kinekt",
+            },
+            {
+              label: "Docs",
+              to: "/docs",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Samuel Müller`,
     },
     prism: {
       theme: prismThemes.github,
