@@ -1,9 +1,9 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import { BackendAndClientSection } from "../helpers/BackendAndClientSection/BackendAndClientSection";
-import { PipelineSection } from "../helpers/PipelineSection/PipelineSection";
-import { RouterSection } from "../helpers/RouterSection/RouterSection";
-import { TypeSafetySection } from "../helpers/TypeSafetySection/TypeSafetySection";
+import { BackendAndClientSection } from "./sections/BackendAndClientSection/BackendAndClientSection";
+import { PipelineSection } from "./sections/PipelineSection/PipelineSection";
+import { RouterSection } from "./sections/RouterSection/RouterSection";
+import { TypeSafetySection } from "./sections/TypeSafetySection/TypeSafetySection";
 import styles from "./styles.module.css";
 
 export default function Home(): JSX.Element {
