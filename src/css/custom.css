@@ -11,8 +11,31 @@
 html[data-theme="dark"] {
   --ifm-background-color: #11032c;
   --ifm-navbar-background-color: unset;
-  --code-block-background-color: #15002c;
   --ifm-color-primary: #55bbff;
+
+  --ifm-toc-border-color: #504e7e;
+
+  --code-block-wrapper-background-color: var(--ifm-background-color);
+  --code-block-wrapper-border-color: var(--ifm-toc-border-color);
+}
+
+.footer--dark {
+  --ifm-footer-background-color: var(--ifm-background-color);
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: 0.75em;
+}
+
+.footer__bottom {
+  margin-top: 4em;
 }
 
 ::selection {
@@ -27,6 +50,8 @@ img {
 .navbar-custom-icon {
   scale: 1;
   transition: scale 0.25s;
+  user-select: unset;
+  pointer-events: unset;
 }
 
 .navbar-custom-icon:hover {
@@ -50,13 +75,24 @@ img {
 }
 
 .theme-code-block {
-  background-color: var(--code-block-background-color) !important;
+  color: white !important;
+  background-color: var(--code-block-wrapper-background-color) !important;
   margin-bottom: 0 !important;
+  border: 1px solid var(--code-block-wrapper-border-color);
+
+  /* Style the border below the title (in the docs) */
+  --ifm-color-emphasis-300: var(--code-block-wrapper-border-color);
+}
+
+main.home-main .theme-code-block {
+  border: none;
 }
 
 .theme-code-block pre {
-  background-color: var(--code-block-background-color) !important;
-  --prism-background-color: var(--code-block-background-color) !important;
+  background-color: var(--code-block-wrapper-background-color) !important;
+  --prism-background-color: var(
+    --code-block-wrapper-background-color
+  ) !important;
 }
 
 .theme-code-block .token {

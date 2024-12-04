@@ -1,5 +1,6 @@
 import CodeBlock from "@theme/CodeBlock";
 import { CodeBlockWrapper } from "../../../helpers/CodeBlockWrapper/CodeBlockWrapper";
+import { normalizeCode } from "../../../helpers/normalizeCode";
 import styles from "./styles.module.css";
 
 export function TypeSafetySection() {
@@ -18,6 +19,9 @@ export function TypeSafetySection() {
         </CodeBlock>
       </CodeBlockWrapper>
 
+      <br></br>
+      <br></br>
+
       <CodeBlockWrapper>
         <CodeBlock language="TypeScript" showLineNumbers>
           {code2}
@@ -27,7 +31,9 @@ export function TypeSafetySection() {
   );
 }
 
-const code1 = `
+const code1 = normalizeCode(`
+// Type safety in pipelines
+
 const pipeline = createPipeline(
   ...,
   authenticate(), //                     <-- adding authenticate middleware
@@ -45,9 +51,11 @@ export const getUser = app.createEndpoint(
     // ...
   }
 );
-`;
+`);
 
-const code2 = `
+const code2 = normalizeCode(`
+// Type safety in endpoints
+
 export const createUser = testPipeline.createEndpoint(
   "POST /organization/:organizationId/users",
   //                        ^---- by using a param segment, you are forced to
@@ -91,4 +99,4 @@ export const createUser = testPipeline.createEndpoint(
     };
   }
 );
-`;
+`);
