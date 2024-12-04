@@ -1,5 +1,6 @@
 import CodeBlock from "@theme/CodeBlock";
 import { CodeBlockWrapper } from "../../../helpers/CodeBlockWrapper/CodeBlockWrapper";
+import { normalizeCode } from "../../../helpers/normalizeCode";
 import styles from "./styles.module.css";
 
 export function BackendAndClientSection() {
@@ -25,7 +26,7 @@ export function BackendAndClientSection() {
   );
 }
 
-const code = `
+const code = normalizeCode(`
 export const getUser = app.createEndpoint(
   "GET /users/:id",
 
@@ -45,4 +46,4 @@ export const getUser = app.createEndpoint(
 );
 
 const user = await getUser({ params: { id: "some-id" } });
-`;
+`);

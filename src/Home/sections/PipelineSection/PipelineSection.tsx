@@ -1,5 +1,6 @@
 import CodeBlock from "@theme/CodeBlock";
 import { CodeBlockWrapper } from "../../../helpers/CodeBlockWrapper/CodeBlockWrapper";
+import { normalizeCode } from "../../../helpers/normalizeCode";
 import styles from "./styles.module.css";
 
 export function PipelineSection() {
@@ -39,7 +40,7 @@ export function PipelineSection() {
   );
 }
 
-const code = `
+const code = normalizeCode(`
 const pipeline = createPipeline(
   cors(),
   authenticate(),
@@ -51,4 +52,4 @@ const pipeline = createPipeline(
 )
 
 const result = await pipeline(context)
-`;
+`);

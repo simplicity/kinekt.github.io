@@ -15,7 +15,7 @@ export default function Home(): JSX.Element {
     >
       <Header></Header>
 
-      <main>
+      <main className="home-main">
         <BackendAndClientSection></BackendAndClientSection>
 
         <PipelineSection></PipelineSection>

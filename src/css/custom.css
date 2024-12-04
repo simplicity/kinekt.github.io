@@ -11,8 +11,12 @@
 html[data-theme="dark"] {
   --ifm-background-color: #11032c;
   --ifm-navbar-background-color: unset;
-  --code-block-background-color: #15002c;
   --ifm-color-primary: #55bbff;
+
+  --ifm-toc-border-color: #504e7e;
+
+  --code-block-wrapper-background-color: var(--ifm-background-color);
+  --code-block-wrapper-border-color: var(--ifm-toc-border-color);
 }
 
 .footer--dark {
@@ -71,13 +75,24 @@ img {
 }
 
 .theme-code-block {
-  background-color: var(--code-block-background-color) !important;
+  color: white !important;
+  background-color: var(--code-block-wrapper-background-color) !important;
   margin-bottom: 0 !important;
+  border: 1px solid var(--code-block-wrapper-border-color);
+
+  /* Style the border below the title (in the docs) */
+  --ifm-color-emphasis-300: var(--code-block-wrapper-border-color);
+}
+
+main.home-main .theme-code-block {
+  border: none;
 }
 
 .theme-code-block pre {
-  background-color: var(--code-block-background-color) !important;
-  --prism-background-color: var(--code-block-background-color) !important;
+  background-color: var(--code-block-wrapper-background-color) !important;
+  --prism-background-color: var(
+    --code-block-wrapper-background-color
+  ) !important;
 }
 
 .theme-code-block .token {
