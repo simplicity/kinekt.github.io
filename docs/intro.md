@@ -2,46 +2,174 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting Started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+:::warning
 
-## Getting Started
+Kinekt is under active development. APIs will change, and you probably shouldn't use it in production just yet.
 
-Get started by **creating a new site**.
+:::
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Installation
 
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```bash npm2yarn
+npm install kinekt
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Define a pipeline
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+```TypeScript title="./pipeline.ts"
+import { AuthenticateCallbackResult, BasePipelineContext, checkAcceptHeader, createPipeline, createValidatedEndpointFactory, deserialize, finalize, handleValidationErrors, logger, serialize, ValidationErrors, withValidation, } from "kinekt";
 
-## Start your site
+const defaultValidationErrorHandler = (validationErrors: ValidationErrors) => ({
+  statusCode: 400 as const,
+  body: validationErrors,
+});
 
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+export const pipeline = createValidatedEndpointFactory(
+  createPipeline(
+    checkAcceptHeader(),
+    deserialize(),
+    withValidation()
+  ).split( // <-- This is where the request handler callback will be placed
+    handleValidationErrors(defaultValidationErrorHandler),
+    serialize(),
+    finalize(),
+    logger()
+  )
+);
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+## Define an endpoint
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+```TypeScript title="./getUser.ts"
+import { z } from "zod";
+import { pipeline } from "../../pipeline";
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+type User = { email: string };
+
+export const getUser = pipeline.createEndpoint(
+  "GET /users/:id",
+
+  {
+    params: z.object({ id: z.coerce.number() }),
+    response: {
+      200: z.custom<User>(),
+      404: z.custom<{ message: string }>(),
+    },
+  },
+
+  async ({ params }) => {
+    const user: User = { email: "some@email.com" } // Insert custom db fetching logic here
+
+    if (user === undefined) {
+      return {
+        statusCode: 404,
+        body: { message: "User not found" },
+      };
+    }
+
+    return {
+      statusCode: 200,
+      body: user,
+    };
+  }
+);
+```
+
+## Create an entry point
+
+```TypeScript title="./api.ts"
+import {
+  consoleLogger,
+  createPipeline,
+  createServer,
+  logger,
+  notFound,
+} from "kinekt";
+import { getUser } from "./endpoints/users/getUser";
+
+// If you don't host a notFound endpoint, the server will return a 500 error
+// instead of a 404 if an unknown path is requested
+const notFoundEndpoint = { pipeline: createPipeline(notFound(), logger()) };
+
+const serve = createServer({
+  logger: consoleLogger,
+  port: parseInt(process.env.PORT ?? "3000"),
+  hostname: "0.0.0.0",
+});
+
+// Add additional endpoints here
+serve(notFoundEndpoint, getUser);
+
+```
+
+## Start server
+
+```bash
+ts-node api.ts
+```
+
+## Call endpoint with curl
+
+```bash
+curl http://localhost:3000/users/123
+```
+
+## Use the client
+
+```TypeScript title="./client.ts"
+import {pipeline} from "./pipeline"
+
+pipeline.setGlobalClientParams({
+  baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
+});
+
+getUser({ params: { id: 123 } })
+  .ok(200) // With this, you tell the client that you assume to receive a 200
+           // status code. Since the `getUser` endpoint might also return 404,
+           // you could use `.ok(400)` as well. An error will be thrown if the
+           // returned status code doesn't meet the expectation.
+           //
+           // Alternatively, you can use `.all()` to handle all potential
+           // results, including unexpected errors such as network errors.
+  .then(console.log);
+```
+
+## Add CORS handling
+
+```TypeScript title="./pipeline.ts"
+createPipeline(
+  cors({origins: "*"}), // Add cors middleware. You should add this to the top
+                        // of the pipeline.
+  ...
+)
+```
+
+## Add authentication
+
+```TypeScript title="./pipeline.ts"
+export type TestSession = { user: { email: string } };
+
+async function getSession<In extends BasePipelineContext>(
+  context: In
+): Promise<AuthenticateCallbackResult<TestSession>> {
+  // Implement custom authentication logic here.
+  const authorization = context.request.getHeader("authorization");
+
+  return authorization === null
+    ? { type: "unset" }
+    : { type: "set", session: { user: { email: atob(authorization) } } };
+}
+
+createPipeline(
+  cors({origins: "*"}),
+  authenticate(getSession), // Add authenticate middleware. You should add this
+                            // after the cors middleware.
+                            //
+                            // After adding this middleware, you will have
+                            // access to `context.session` inside your request
+                            // handlers.
+  ...
+)
+```

@@ -38,17 +38,12 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
+          remarkPlugins: [
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
+          ],
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ["rss", "atom"],
-            xslt: true,
-          },
-          // Useful options to enforce blogging best practices
-          onInlineTags: "warn",
-          onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
+        pages: {
+          remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -77,7 +72,7 @@ const config: Config = {
           position: "right",
           value: `
             <a target="_blank" href="https://bsky.app/profile/kinekt.dev">
-              <img src="img/bluesky.svg" alt="Logo" class="navbar-custom-icon navbar-bluesky-icon" />
+              <img src="/img/bluesky.svg" alt="Logo" class="navbar-custom-icon navbar-bluesky-icon" />
             </a>
           `,
           className: "custom-navbar-item",
@@ -87,7 +82,7 @@ const config: Config = {
           position: "right",
           value: `
               <a target="_blank" href="https://github.com/simplicity/kinekt">
-                <img src="img/github.svg" alt="Logo" class="navbar-custom-icon navbar-github-icon" />
+                <img src="/img/github.svg" alt="Logo" class="navbar-custom-icon navbar-github-icon" />
               </a>
             `,
           className: "custom-navbar-item",
