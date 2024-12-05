@@ -1,7 +1,13 @@
 .outer {
   position: relative;
   display: flex;
-  padding-bottom: 17.5em;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 40em;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .texts {
@@ -9,7 +15,8 @@
   flex-direction: column;
   max-width: 9em;
   text-align: right;
-  z-index: 1;
+  z-index: 0;
+  margin-right: 2em;
 }
 
 .texts h1 {
@@ -18,7 +25,19 @@
 
 .purpleBlob {
   position: absolute;
-  top: 7.5em;
-  left: -20em;
-  z-index: 0;
+  transform: translateX(-24em) translateY(1em);
+  z-index: 1;
+}
+
+@media (max-width: 991px) {
+  .outer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .texts {
+    max-width: unset;
+    text-align: center;
+    margin-right: 0;
+  }
 }

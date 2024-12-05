@@ -4,17 +4,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 10em;
+  overflow: hidden;
+  height: 50em;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .outer h1 {
-  z-index: 2;
+  z-index: 1;
+  text-align: center;
 }
 
 .row {
   display: flex;
+  justify-content: center;
   align-items: flex-start;
-  padding-left: 5em;
   z-index: 1;
 }
 
@@ -23,17 +28,31 @@
   flex-direction: column;
   max-width: 12em;
   text-align: right;
+  margin-right: 2em;
 }
 
 .blueBlob {
   position: absolute;
-  right: -10em;
-  top: -12em;
-  z-index: 0;
+  transform: translateX(22em) translateY(-10em);
+  z-index: 2;
 }
 
 .illustration {
   position: absolute;
-  width: 15em;
-  left: -10em;
+  transform: translateX(-30em);
+  z-index: 0;
+}
+
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+    padding-left: unset;
+  }
+
+  .paragraphs {
+    text-align: center;
+    max-width: 20em;
+    margin-right: 0;
+  }
 }

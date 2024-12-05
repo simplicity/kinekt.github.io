@@ -2,7 +2,12 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-bottom: 10em;
+  justify-content: center;
+  height: 50em;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .texts {
@@ -10,15 +15,38 @@
   flex-direction: column;
   width: 20em;
   z-index: 1;
+  transform: translateX(-15em);
 }
 
 .blueBlob {
   position: absolute;
-  left: -18em;
-  top: 6.5em;
-  z-index: 0;
+  z-index: 2;
+  transform: translateX(-25em) translateY(5em);
 }
 
 .illustration {
-  right: 0;
+  position: absolute;
+  transform: translateX(10em);
+  z-index: 0;
+}
+
+@media (max-width: 767px) {
+  .outer {
+    flex-direction: column;
+    text-align: center;
+    height: 23em;
+  }
+
+  .texts {
+    transform: none;
+  }
+
+  .illustration {
+    scale: 0.5;
+    transform: translateX(30em) translateY(0em);
+  }
+
+  .blueBlob {
+    scale: 0.5;
+  }
 }

@@ -84,7 +84,11 @@ img {
   --ifm-color-emphasis-300: var(--code-block-wrapper-border-color);
 }
 
-main.home-main .theme-code-block {
+.home-main {
+  width: 100%;
+}
+
+.home-main .theme-code-block {
   border: none;
 }
 
