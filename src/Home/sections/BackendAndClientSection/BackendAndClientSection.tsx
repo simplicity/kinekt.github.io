@@ -37,13 +37,9 @@ export const getUser = app.createEndpoint(
 
   async ({ params }) => {
     const user = await db.users.findOne(params.id);
-
-    return {
-      statusCode: 200,
-      body: user,
-    };
+    return { statusCode: 200, body: user };
   }
 );
 
-const user = await getUser({ params: { id: "some-id" } });
+const user = await getUser({ params: { id: "some-id" } }).ok(200);
 `);

@@ -26,9 +26,13 @@
 .paragraphs {
   display: flex;
   flex-direction: column;
-  max-width: 12em;
+  max-width: 14em;
   text-align: right;
   margin-right: 2em;
+}
+
+.paragraphs p:last-child {
+  margin: 0;
 }
 
 .blueBlob {

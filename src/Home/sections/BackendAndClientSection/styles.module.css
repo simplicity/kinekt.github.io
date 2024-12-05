@@ -19,6 +19,10 @@
   margin-right: 2em;
 }
 
+.texts p {
+  margin: 0;
+}
+
 .texts h1 {
   font-size: 1.75em;
 }
@@ -39,5 +43,9 @@
     max-width: unset;
     text-align: center;
     margin-right: 0;
+  }
+
+  .texts p {
+    margin-bottom: 1em;
   }
 }

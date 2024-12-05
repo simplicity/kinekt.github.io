@@ -83,27 +83,17 @@ export const getUser = pipeline.createEndpoint(
 );
 ```
 
-## Create an entry point
+## Create a server
 
 ```TypeScript title="./api.ts"
-import {
-  consoleLogger,
-  createPipeline,
-  createServer,
-  logger,
-  notFound,
-} from "kinekt";
+import { consoleLogger, createPipeline, createServer, logger, notFound } from "kinekt";
 import { getUser } from "./endpoints/users/getUser";
 
 // If you don't host a notFound endpoint, the server will return a 500 error
 // instead of a 404 if an unknown path is requested
 const notFoundEndpoint = { pipeline: createPipeline(notFound(), logger()) };
 
-const serve = createServer({
-  logger: consoleLogger,
-  port: parseInt(process.env.PORT ?? "3000"),
-  hostname: "0.0.0.0",
-});
+const serve = createServer({ port: "3000" });
 
 // Add additional endpoints here
 serve(notFoundEndpoint, getUser);

@@ -36,7 +36,8 @@ const code1 = normalizeCode(`
 
 const pipeline = createPipeline(
   ...,
-  authenticate(), //                     <-- adding authenticate middleware
+  authenticate(handler), //               <-- adding authenticate middleware
+                         //                   with a handler callback
   ...
 );
 
@@ -44,9 +45,11 @@ export const getUser = app.createEndpoint(
   // ...
 
   async ({ context }) => {
-    const currentUser = context.user; // <-- the compiler gives an error if the
-                                      //     authenticate middleware is not
-                                      //     present in the pipeline.
+    const session = context.session; //   <-- the context now has a session 
+                                     //       property available which is
+                                     //       determined by the handler that was
+                                     //       defined.
+    const user = session.user;
 
     // ...
   }

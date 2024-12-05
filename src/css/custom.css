@@ -111,6 +111,10 @@ img {
   color: #55bbff !important;
 }
 
+.theme-code-block .number {
+  color: #55bbff !important;
+}
+
 .theme-code-block .punctuation {
   color: #55bbff !important;
 }
