@@ -19,6 +19,10 @@ html[data-theme="dark"] {
   --code-block-wrapper-border-color: var(--ifm-toc-border-color);
 }
 
+.navbar__logo {
+  height: 1.5rem;
+}
+
 .footer--dark {
   --ifm-footer-background-color: var(--ifm-background-color);
 }

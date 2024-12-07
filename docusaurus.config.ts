@@ -5,14 +5,10 @@ import { themes as prismThemes } from "prism-react-renderer";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
-  favicon: "img/favicon.ico",
+  title: "Kinekt - Build REST APIs With High Precision",
+  favicon: "img/kinekt-logo.svg",
 
-  // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: "https://kinekt.dev",
   baseUrl: "/",
 
   // GitHub pages deployment config.
@@ -53,11 +49,9 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
     navbar: {
       logo: {
-        alt: "My Site Logo",
+        alt: "Kinekt Logo",
         src: "img/kinekt-logo-with-text.svg",
       },
       items: [
