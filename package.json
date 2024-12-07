@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "docusaurus start --no-open",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -13,7 +13,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "generate-favicon": "magick -background transparent -define 'icon:auto-resize=16,24,32,64' static/img/kinekt-logo.svg static/img/favicon.ico"
   },
   "dependencies": {
     "@docusaurus/core": "3.6.3",

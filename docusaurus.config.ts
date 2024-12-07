@@ -6,7 +6,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
   title: "Kinekt - Build REST APIs With High Precision",
-  favicon: "img/kinekt-logo.svg",
+  favicon: "img/favicon.ico",
 
   url: "https://kinekt.dev",
   baseUrl: "/",
