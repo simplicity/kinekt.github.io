@@ -9,10 +9,7 @@ import { TypeSafetySection } from "./sections/TypeSafetySection/TypeSafetySectio
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="Kinekt is a Web Framework written in TypeScript."
-    >
+    <Layout description="Kinekt is a Web Framework written in TypeScript.">
       <Header></Header>
 
       <main className="home-main">
