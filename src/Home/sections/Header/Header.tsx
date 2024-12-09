@@ -6,7 +6,10 @@ export function Header() {
   return (
     <header className={styles.header}>
       <h1>Build REST APIs With High Precision.</h1>
-      <h2>Kinekt is a Web Framework written in TypeScript.</h2>
+      <h2>
+        A TypeScript-first web framework for building the next generation of web
+        apps.
+      </h2>
 
       <Link
         className={clsx("button", "button--primary", styles.button)}
