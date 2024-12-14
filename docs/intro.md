@@ -25,25 +25,25 @@ npm install kinekt
 ## Define a pipeline
 
 ```TypeScript title="./pipeline.ts"
-import { AuthenticateCallbackResult, BasePipelineContext, checkAcceptHeader, createPipeline, createValidatedEndpointFactory, deserialize, finalize, handleValidationErrors, logger, serialize, ValidationErrors, withValidation, } from "kinekt";
+import {
+  AuthenticateCallbackResult,
+  BasePipelineContext,
+  simpleSetup,
+} from "kinekt";
 
-const defaultValidationErrorHandler = (validationErrors: ValidationErrors) => ({
-  statusCode: 400 as const,
-  body: validationErrors,
-});
+export type TestSession = { user: { email: string } };
 
-export const pipeline = createValidatedEndpointFactory(
-  createPipeline(
-    checkAcceptHeader(),
-    deserialize(),
-    withValidation()
-  ).split( // <-- This is where the request handler callback will be placed
-    handleValidationErrors(defaultValidationErrorHandler),
-    serialize(),
-    finalize(),
-    logger()
-  )
-);
+async function getSession<In extends BasePipelineContext>(
+  context: In
+): Promise<AuthenticateCallbackResult<TestSession>> {
+  const authorization = context.request.getHeader("authorization");
+
+  return authorization === null
+    ? { type: "unset" }
+    : { type: "set", session: { user: { email: atob(authorization) } } };
+}
+
+export const pipeline = simpleSetup({ cors: { origins: "*" }, getSession });
 ```
 
 ## Define an endpoint
@@ -86,7 +86,7 @@ export const getUser = pipeline.createEndpoint(
 ## Create a server
 
 ```TypeScript title="./api.ts"
-import { consoleLogger, createPipeline, createServer, createNotFoundEndpoint } from "kinekt";
+import { createServer, createNotFoundEndpoint } from "kinekt";
 import { getUser } from "./endpoints/users/getUser";
 
 const serve = createServer({ port: "3000" });
@@ -115,7 +115,7 @@ curl http://localhost:3000/users/123
 ## Use the client
 
 ```TypeScript title="./client.ts"
-import {pipeline} from "./pipeline"
+import { pipeline } from "./pipeline"
 
 pipeline.setGlobalClientParams({
   baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
@@ -130,42 +130,4 @@ getUser({ params: { id: 123 } })
            // Alternatively, you can use `.all()` to handle all potential
            // results, including unexpected errors such as network errors.
   .then(console.log);
-```
-
-## Add CORS handling
-
-```TypeScript title="./pipeline.ts"
-createPipeline(
-  cors({origins: "*"}), // Add cors middleware. You should add this to the top
-                        // of the pipeline.
-  ...
-)
-```
-
-## Add authentication
-
-```TypeScript title="./pipeline.ts"
-export type TestSession = { user: { email: string } };
-
-async function getSession<In extends BasePipelineContext>(
-  context: In
-): Promise<AuthenticateCallbackResult<TestSession>> {
-  // Implement custom authentication logic here.
-  const authorization = context.request.getHeader("authorization");
-
-  return authorization === null
-    ? { type: "unset" }
-    : { type: "set", session: { user: { email: atob(authorization) } } };
-}
-
-createPipeline(
-  cors({origins: "*"}),
-  authenticate(getSession), // Add authenticate middleware. You should add this
-                            // after the cors middleware.
-                            //
-                            // After adding this middleware, you will have
-                            // access to `context.session` inside your request
-                            // handlers.
-  ...
-)
 ```
