@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 50em;
+  height: 60em;
   width: 100%;
   padding-left: 1em;
   padding-right: 1em;
@@ -14,6 +14,7 @@
 .outer h1 {
   z-index: 1;
   text-align: center;
+  font-size: 4em;
 }
 
 .row {
@@ -26,9 +27,8 @@
 .paragraphs {
   display: flex;
   flex-direction: column;
-  max-width: 14em;
-  text-align: right;
-  margin-right: 2em;
+  max-width: 16em;
+  text-align: center;
 }
 
 .paragraphs p:last-child {
@@ -37,17 +37,27 @@
 
 .blueBlob {
   position: absolute;
-  transform: translateX(22em) translateY(-10em);
+  transform: translateX(12em) translateY(-10em) scale(1);
   z-index: 2;
 }
 
-.illustration {
+.pipelineIllustration {
   position: absolute;
-  transform: translateX(-30em);
+  transform: translateX(-20em) translateY(-10em) scale(0.8);
+  z-index: 0;
+}
+
+.routerIllustration {
+  position: absolute;
+  transform: translateX(20em) translateY(10em) scale(0.7);
   z-index: 0;
 }
 
 @media (max-width: 767px) {
+  .outer {
+    height: 40em;
+  }
+
   .row {
     flex-direction: column;
     align-items: center;
@@ -58,5 +68,13 @@
     text-align: center;
     max-width: 20em;
     margin-right: 0;
+  }
+
+  .pipelineIllustration {
+    display: none;
+  }
+
+  .routerIllustration {
+    display: none;
   }
 }

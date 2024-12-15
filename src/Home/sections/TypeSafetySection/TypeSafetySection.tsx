@@ -6,7 +6,11 @@ import styles from "./styles.module.css";
 export function TypeSafetySection() {
   return (
     <div className={styles.outer}>
-      <h1>Type Safety</h1>
+      <img className={styles.blueBlob1} src="img/blue-blob-1.png"></img>
+      <img className={styles.blueBlob2} src="img/blue-blob-1.png"></img>
+      <img className={styles.purpleBlob1} src="img/purple-blob-1.png"></img>
+
+      <h1>100% Type Safe</h1>
 
       <p>
         Kinekt takes full advantage of the TypeScript Compiler to write 100%

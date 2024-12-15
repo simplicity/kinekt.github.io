@@ -7,6 +7,7 @@
   padding-left: 1em;
   padding-right: 1em;
   overflow: hidden;
+  position: relative;
 }
 
 .outer h1 {
@@ -15,4 +16,23 @@
 
 .outer p {
   text-align: center;
+}
+
+.blueBlob1 {
+  position: absolute;
+  transform: translateX(12em) translateY(10em);
+  z-index: 2;
+}
+
+.blueBlob2 {
+  position: absolute;
+  transform: translateX(-12em) translateY(50em);
+  z-index: 2;
+}
+
+.purpleBlob1 {
+  position: absolute;
+  transform: translateX(18em) translateY(70em);
+  opacity: 0.5;
+  z-index: 2;
 }
