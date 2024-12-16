@@ -79,4 +79,4 @@ createUser(null as any)
   });
 ```
 
-Note that the value of `result.value.statusCode` depends both on the definition of your endpoint as well as the underlying pipeline. For example, if you used a pipeline that did not include the `authentication` middleware, you wouldn't have to handle the `401` here. Instead, you would get a compiler error.
+Note that the value of `result.value.statusCode` depends both on the definition of your endpoint as well as the underlying pipeline. For example, if you used a pipeline that did not include the `authenticate()` middleware, you wouldn't have to handle the `401` here. Instead, you would get a compiler error.
