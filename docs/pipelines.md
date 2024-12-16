@@ -66,3 +66,7 @@ const createUser = app.createEndpoint(...);
 Note the use of the `.split()` call: it means that we're splitting up the pipeline into two parts, which allows `createSchematizedEndpointFactory` to place a custom middleware (called `schematizedEndpoint`) inbetween. This is the middleware which powers the definition of 100% typesafe endpoints by using zod schemas.
 
 With `app.createEndpoint()`, we can now create as many endpoints as we want. Note that, while each endpoint is a stand-alone pipeline, the middleware instances are reused, which means that memory consumption remains low.
+
+## Modularity
+
+It is important to highlight the aspect of modularity which comes with the pipeline architecture. By using this concept, we're completely free in defining different kinds of endpoints. When building a REST api, we're most likely going to use the schematized endpoints. But we might have special scenarios, where we need a request to be routed to a custom processing pipeline. In this scenario, we can simply create a custom pipeline and perhaps a custom endpoint factory function in order to write more custom processing code.
