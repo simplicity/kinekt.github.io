@@ -50,7 +50,7 @@ const app = createSchematizedEndpointFactory(
   )
 )
 
-const createUser = app.createEndpoint(...);
+const createUser = app.createEndpoint(
   "POST /users",
 
   {
@@ -61,6 +61,7 @@ const createUser = app.createEndpoint(...);
   async ({ params, query, body }) => {
     ...
   }
+)
 ```
 
 Note the use of the `.split()` call: it means that we're splitting up the pipeline into two parts, which allows `createSchematizedEndpointFactory` to place a custom middleware (called `schematizedEndpoint`) inbetween. This is the middleware which powers the definition of 100% typesafe endpoints by using zod schemas.
