@@ -13,7 +13,7 @@ export function Header() {
 
       <Link
         className={clsx("button", "button--primary", styles.button)}
-        to="/docs/intro"
+        to="/docs/getting-started"
       >
         Get Started
       </Link>

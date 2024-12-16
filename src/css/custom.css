@@ -81,7 +81,6 @@ img {
 .theme-code-block {
   color: white !important;
   background-color: var(--code-block-wrapper-background-color) !important;
-  margin-bottom: 0 !important;
   border: 1px solid var(--code-block-wrapper-border-color);
 
   /* Style the border below the title (in the docs) */
@@ -94,6 +93,7 @@ img {
 
 .home-main .theme-code-block {
   border: none;
+  margin-bottom: 0 !important;
 }
 
 .theme-code-block pre {
