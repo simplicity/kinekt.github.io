@@ -28,7 +28,7 @@ Call it:
 getUser(...);
 ```
 
-The options you can pass to the client (in this case, `getUser`) are determined by the zod schemas you used to create the endpoint.
+The options you pass to the client (in this case, `getUser`) are determined by the zod schemas you used to create the endpoint.
 
 Note that you'll have to configure the base url that shall be used when calling the client. You might also want to pass an authorize header that shall be passed along the fetch call. You do that on the endpoint factory:
 
