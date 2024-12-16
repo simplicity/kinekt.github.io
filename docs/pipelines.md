@@ -67,6 +67,8 @@ Note the use of the `.split()` call: it means that we're splitting up the pipeli
 
 With `app.createEndpoint()`, we can now create as many endpoints as we want. Note that, while each endpoint is a stand-alone pipeline, the middleware instances are reused, which means that memory consumption remains low.
 
-## Modularity
+## Modularity & Opinionatedness
 
-It is important to highlight the aspect of modularity which comes with the pipeline architecture. By using this concept, we're completely free in defining different kinds of endpoints. When building a REST api, we're most likely going to use the schematized endpoints. But we might have special scenarios, where we need a request to be routed to a custom processing pipeline. In this scenario, we can simply create a custom pipeline and perhaps a custom endpoint factory function in order to write more custom processing code.
+It is important to highlight the aspect of modularity which comes with the pipeline architecture. By using this concept, we're completely free in defining different kinds of endpoints. When building a REST api, we're most likely going to use the schematized endpoints. But we might have special scenarios, where we need a request to be routed to a custom processing pipeline. In this case, we can simply create a custom pipeline and perhaps a custom endpoint factory function in order to write more custom processing code.
+
+It is also important to note that kinekt has an unopinionated core: the concept of middlewares and pipelines is very common, easy to understand and simple to implement. Opinionatedness in kinekt arises through custom layers such as the `createSchematizedEndpointFactory`. You are not forced to use that, however. In fact, `createSchematizedEndpointFactory` could be moved to a separate package, and the framework itself would still be perfectly useable.
