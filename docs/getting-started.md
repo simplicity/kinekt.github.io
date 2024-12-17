@@ -100,7 +100,7 @@ serve(notFoundEndpoint, getUser);
 
 ```
 
-## Start server
+## Start the server
 
 ```bash
 ts-node api.ts

@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # File organization
 
-In kinekt, you're free in how you organize your endpoint code. Note that there are no mutable `app` or `router` objects that you have to awkwardly pass around. Instead, you typically have an endpoint factory from which you create your endpoints. The individual endpoints can then be collected in and served from a single file.
+In kinekt, you're free in how you organize your endpoint code. Note that there are no mutable `app` or `router` objects that you have to awkwardly pass around. There's no controller classes to wrap around your endpoints. Instead, you typically have an endpoint factory from which you forge your endpoints, which ultimately are just async functions. The individual endpoints can then be imported into and served from a single file.
 
 The recommended approach is to create a separate file per endpoint. You will most likely be writing code to interact with a DB. Such code belongs into the same file, together with the endpoint declaration. With this approach, you achieve a good separation of concerns, where a single usecase (for example, "Create User") is self-contained in a file. If you have shared DB code (or any other kind of helper functions), extract them as needed.
 
